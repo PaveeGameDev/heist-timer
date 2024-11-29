@@ -36,84 +36,85 @@ export default function App() {
     };
 
     return (
-        <div style={styles.container}>
-            {!timerEnded ? (
-                <>
-                    <div style={styles.timerContainer}>
-                        <p style={styles.title}>Countdown Timer</p>
-                        <div style={styles.timer}>{formatTime(timeLeft)}</div>
-                    </div>
-                    <div style={styles.buttonContainer}>
-                        {!isRunning && (
-                            <button style={styles.button} onClick={() => setIsRunning(true)}>
-                                Start Timer
-                            </button>
-                        )}
-                        {isRunning && (
-                            <button
-                                style={styles.button}
-                                onClick={() => setTimeLeft((prev) => prev + 900)}
-                            >
-                                Add 15 Minutes
-                            </button>
-                        )}
-                    </div>
-                </>
-            ) : (
-                <p style={styles.lostMessage}>You lost</p>
-            )}
-        </div>
-    );
-}
+        <>
+            <div style={styles.container}>
+                {!timerEnded ? (
+                    <>
+                        <div style={styles.timerContainer}>
+                            <p style={styles.title}>Time until oxygen is depleted</p>
+                            <div style={styles.timer}>{formatTime(timeLeft)}</div>
+                        </div>
+                    </>
+                ) : (
+                    <p style={styles.lostMessage}>You lost</p>
+                )}
+            </div>
+            <div style={styles.buttonContainer}>
+                {!isRunning && (
+                    <button style={styles.button} onClick={() => setIsRunning(true)}>
+                        Start
+                    </button>
+                )}
+                {isRunning && (
+                    <button
+                        style={styles.button}
+                        onClick={() => setTimeLeft((prev) => prev + 900)}
+                    >
+                        Release an oxygen tank
+                    </button>
+                )}
+            </div></>
+            );
+            }
 
-// Styles
-const styles = {
-    container: {
-        fontFamily: "Arial, sans-serif",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh", // Full viewport height
-        width: "100vw",
-        textAlign: "center",
-    },
-    timerContainer: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100vw"
-    },
-    title: {
-        fontSize: "24px",
-        fontWeight: "bold",
-        marginBottom: "10px",
-    },
-    timer: {
-        fontSize: "32px",
-        fontWeight: "bold",
-        margin: "10px 0",
-    },
-    buttonContainer: {
-        marginTop: "200vh", // Pushes the buttons out of the initial viewport
-    },
-    button: {
-        padding: "10px 20px",
-        fontSize: "16px",
-        margin: "10px",
-        borderRadius: "5px",
-        border: "none",
-        backgroundColor: "#007BFF",
-        color: "white",
-        cursor: "pointer",
-        transition: "background-color 0.3s",
-    },
-    buttonHover: {
-        backgroundColor: "#0056b3",
-    },
-    lostMessage: {
-        fontSize: "24px",
-        fontWeight: "bold",
-        color: "red",
-    },
-};
+            // Styles
+            const styles = {
+            container: {
+            fontFamily: "Arial, sans-serif",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh", // Full viewport height
+            width: "100vw",
+            textAlign: "center",
+        },
+            timerContainer: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100vw"
+        },
+            title: {
+            fontSize: "48px",
+            fontWeight: "bold",
+            marginBottom: "10px",
+        },
+            timer: {
+            fontSize: "72px",
+            fontWeight: "bold",
+            margin: "10px 0",
+        },
+            buttonContainer: {
+            marginTop: "20vh", // Pushes the buttons out of the initial viewport
+        },
+            button: {
+            padding: "10px 20px",
+            fontSize: "16px",
+            margin: "10px",
+            borderRadius: "5px",
+            border: "none",
+            backgroundColor: "#007BFF",
+            color: "white",
+            cursor: "pointer",
+            transition: "background-color 0.3s",
+        },
+            buttonHover: {
+            backgroundColor: "#0056b3",
+        },
+            lostMessage: {
+            fontSize: "24px",
+            fontWeight: "bold",
+            color: "red",
+        },
+        };
