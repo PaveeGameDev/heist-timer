@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function App() {
-    const [timeLeft, setTimeLeft] = useState(3600); // 3600 seconds = 1 hour
+    const [timeLeft, setTimeLeft] = useState(2400); // 3600 seconds = 1 hour
     const [isRunning, setIsRunning] = useState(false); // Timer starts only when set to true
     const [timerEnded, setTimerEnded] = useState(false); // Tracks if timer hit 0
 
@@ -46,7 +46,7 @@ export default function App() {
                         </div>
                     </>
                 ) : (
-                    <p style={styles.lostMessage}>You lost</p>
+                    <p style={styles.lostMessage}>Oxygen successfully extracted</p>
                 )}
             </div>
             <div style={styles.buttonContainer}>
@@ -113,7 +113,7 @@ export default function App() {
             backgroundColor: "#0056b3",
         },
             lostMessage: {
-            fontSize: "24px",
+            fontSize: "48px",
             fontWeight: "bold",
             color: "red",
         },
