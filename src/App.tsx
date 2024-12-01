@@ -6,7 +6,7 @@ export default function App() {
     const [timerEnded, setTimerEnded] = useState(false); // Tracks if timer hit 0
 
     useEffect(() => {
-        let timer: number; // Fix: Use `number` for the timer
+        let timer: number; // Use `number` for the timer
 
         if (isRunning) {
             timer = window.setInterval(() => {
@@ -41,27 +41,25 @@ export default function App() {
                 {!timerEnded ? (
                     <>
                         <div style={styles.timerContainer}>
-                            <p style={styles.title}>Time until oxygen is depleted</p>
-                            <div style={styles.timer}>{formatTime(timeLeft)}</div>
+                            <p
+                                style={styles.title}
+                                onClick={() => {
+                                    if (!isRunning) setIsRunning(true);
+                                    else setTimeLeft((prev) => prev + 600); // Add 10 minutes
+                                }}
+                            >
+                                Time until oxygen is depleted
+                            </p>
+                            <div
+                                style={styles.timer}
+                                onClick={() => setIsRunning((prev) => !prev)}
+                            >
+                                {formatTime(timeLeft)}
+                            </div>
                         </div>
                     </>
                 ) : (
                     <p style={styles.lostMessage}>Oxygen successfully extracted</p>
-                )}
-            </div>
-            <div style={styles.buttonContainer}>
-                {!isRunning && (
-                    <button style={styles.button} onClick={() => setIsRunning(true)}>
-                        Start
-                    </button>
-                )}
-                {isRunning && (
-                    <button
-                        style={styles.button}
-                        onClick={() => setTimeLeft((prev) => prev + 900)}
-                    >
-                        Release an oxygen tank
-                    </button>
                 )}
             </div>
         </>
@@ -90,25 +88,13 @@ const styles: { [key: string]: React.CSSProperties } = {
         fontSize: "48px",
         fontWeight: "bold",
         marginBottom: "10px",
+        cursor: "pointer", // Indicate clickable behavior
     },
     timer: {
         fontSize: "72px",
         fontWeight: "bold",
         margin: "10px 0",
-    },
-    buttonContainer: {
-        marginTop: "20vh", // Pushes the buttons out of the initial viewport
-    },
-    button: {
-        padding: "10px 20px",
-        fontSize: "16px",
-        margin: "10px",
-        borderRadius: "5px",
-        border: "none",
-        backgroundColor: "#007BFF",
-        color: "white",
-        cursor: "pointer",
-        transition: "background-color 0.3s",
+        cursor: "pointer", // Indicate clickable behavior
     },
     lostMessage: {
         fontSize: "48px",
